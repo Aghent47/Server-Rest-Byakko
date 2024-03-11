@@ -7,7 +7,6 @@ const router = express.Router();
 router.get('/', usuarios.get);
 
 router.post('/', [
-    
     validarCampos,
 ] , usuarios.post );
 

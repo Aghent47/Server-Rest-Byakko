@@ -1,4 +1,5 @@
 import { response, request } from 'express';
+import {Usuario} from '../models/usuarios.js'
 
 const usuarios = {};
 
@@ -8,12 +9,14 @@ usuarios.get = async (req = response, res = request) => {
     res.json(username);
 }
 
-usuarios.post = async (req = response, res = request) => {
+usuarios.post = async (req, res) => {
 
-    const {nombre, correo, password, rol} = req.body;
+    const { correo, password, rol, nombre } = req.body;
+    const usuario = new Usuario({nombre, correo, password, rol});
 
     res.json({
-        
+        msq: 'POST API - usuarios.post',
+        usuario
     })
 
 }
