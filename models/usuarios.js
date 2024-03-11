@@ -43,7 +43,8 @@ const UsuarioSchema = new Schema({
         type: String
     },
     dni:{
-        type: String
+        type: String,
+        required: true
     },
     kyu: {
         type: String,
