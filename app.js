@@ -1,6 +1,6 @@
 import 'dotenv/config';
-import { Server } from './models/server.js';
+import {ServerBY} from './models/server.js';
 
-const server = new Server();
+const server = new ServerBY();
 
 server.listen();
