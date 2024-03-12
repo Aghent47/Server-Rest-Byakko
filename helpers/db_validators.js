@@ -1,3 +1,4 @@
+import { Role } from "../models/role.js";
 import { Usuario } from "../models/usuarios.js"
 
 export const emailExist = async (correo = '') => {
@@ -19,5 +20,12 @@ export const exiteUsuarioById = async (id) => {
     const existeUsuario = await Usuario.findById( id );
     if(!existeUsuario){
         throw new Error(`El usuario con ID: ${ id } No se encuentra registrado ` );
+    }
+}
+
+export const esRolevalido = async(rol = '') => {
+    const existeRol = await Role.findOne({rol});
+    if(!existeRol){
+        throw new Error(`El rol ${rol} no esta registrado en la BD`);
     }
 }

@@ -2,7 +2,7 @@ import express from 'express';
 import usuarios from '../controllers/usuarios.js';
 import { validarCampos } from '../middlewares/index.js';
 import { check } from 'express-validator';
-import { dniExiste, emailExist, exiteUsuarioById } from '../helpers/db_validators.js';
+import { dniExiste, emailExist, esRolevalido, exiteUsuarioById } from '../helpers/db_validators.js';
 
 const router = express.Router();
 
@@ -15,6 +15,7 @@ router.post('/', [
     check('correo', 'El correo no es válido').isEmail(),
     check('correo').custom(emailExist),
     check('dni').custom(dniExiste),
+    check('rol').custom(esRolevalido),
 
     validarCampos,
 
