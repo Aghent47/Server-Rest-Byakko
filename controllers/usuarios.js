@@ -23,8 +23,8 @@ usuarios.get = async (req = response, res = request) => {
 
 usuarios.post = async (req, res) => {
 
-    const { correo, password, rol, nombre,dni } = req.body;
-    const usuario = new Usuario({nombre, correo, password, rol, dni});
+    const { correo, password, rol, nombre, dni, ...resto } = req.body;
+    const usuario = new Usuario({nombre, correo, password, rol, dni, ...resto});
 
     await usuario.save();
     res.json({

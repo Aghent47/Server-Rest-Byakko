@@ -77,6 +77,7 @@ const UsuarioSchema = new Schema({
     },
     paz_y_salvo: {
         type: Boolean,
+        default: true
     },
     fecha_ultimo_examen: {
         type: Date
