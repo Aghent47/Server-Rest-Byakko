@@ -10,4 +10,8 @@ router.post('/', [
     validarCampos,
 ] , usuarios.post );
 
+router.put('/:id', usuarios.put );
+
+router.delete('/:id', usuarios.delete);
+
 export default router;

@@ -34,5 +34,19 @@ usuarios.post = async (req, res) => {
 
 }
 
+usuarios.put = async (req, res) => {
+
+    res.json({
+        msg: 'PUT API - usuarios.put',
+    })
+}
+
+usuarios.delete = async (req, res) => {
+
+    res.json({
+        msg: 'DELETE API - usuarios.delete',
+    })
+}
+
 export default usuarios;
 
