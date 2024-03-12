@@ -14,3 +14,10 @@ export const dniExiste = async (dni = '') => {
         throw new Error(`El numero de documento ${ dni } ya se encuentra registrado`);
     }
 }
+
+export const exiteUsuarioById = async (id) => {
+    const existeUsuario = await Usuario.findById( id );
+    if(!existeUsuario){
+        throw new Error(`El usuario con ID: ${ id } No se encuentra registrado ` );
+    }
+}

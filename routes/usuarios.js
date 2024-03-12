@@ -2,7 +2,7 @@ import express from 'express';
 import usuarios from '../controllers/usuarios.js';
 import { validarCampos } from '../middlewares/index.js';
 import { check } from 'express-validator';
-import { dniExiste, emailExist } from '../helpers/db_validators.js';
+import { dniExiste, emailExist, exiteUsuarioById } from '../helpers/db_validators.js';
 
 const router = express.Router();
 
@@ -20,7 +20,11 @@ router.post('/', [
 
 ] , usuarios.post );
 
-router.put('/:id', usuarios.put );
+router.put('/:id', [
+    check('id', 'No es un ID válido').isMongoId(),
+    check('id').custom(exiteUsuarioById),
+    validarCampos,
+] , usuarios.put );
 
 router.delete('/:id', usuarios.delete);
 
