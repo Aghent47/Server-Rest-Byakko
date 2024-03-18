@@ -41,8 +41,14 @@ usuarios.post = async (req, res) => {
 
 usuarios.put = async (req, res) => {
 
+    const { id } = req.params;
+    const { _id, password, google, correo, ...resto } = req.body;
+
+    const usuario = await Usuario.findByIdAndUpdate(id, resto);
+
     res.json({
         msg: 'PUT API - usuarios.put',
+        usuario
     })
 }
 
