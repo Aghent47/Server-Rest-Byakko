@@ -44,8 +44,14 @@ usuarios.put = async (req, res) => {
     const { id } = req.params;
     const { _id, password, google, correo, ...resto } = req.body;
 
-    const usuario = await Usuario.findByIdAndUpdate(id, resto);
+    if (password) {
+        // Encriptar la contraseña HASS
+        const salt = bcryptjs.genSaltSync();
+        resto.password = bcryptjs.hashSync(password, salt);
+    }
 
+    const usuario = await Usuario.findByIdAndUpdate(id, resto);
+    
     res.json({
         msg: 'PUT API - usuarios.put',
         usuario
