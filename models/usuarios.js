@@ -5,6 +5,19 @@ const UsuarioSchema = new Schema({
         type: String,
         required: [true, 'El nombre es obligatorio'],
     },
+    fecha_nacimiento: {
+        type: Date,
+    },
+    direccion: {
+        type: String
+    },
+    telefono: {
+        type: String
+    },
+    genero: {
+        type: String,
+        enum: ['Masculino', 'Femenino', 'Otro']
+    },
     correo: {
         type: String,
         required: [true, 'El correo es obligatorio'],
@@ -12,6 +25,13 @@ const UsuarioSchema = new Schema({
     password: {
         type: String,
         required: [true, 'La contraseña es obligatoria'],
+    },
+    nacionalidad: {
+        type: String
+    },
+    dni:{
+        type: String,
+        required: true
     },
     rol: {
         type: String,
@@ -29,6 +49,36 @@ const UsuarioSchema = new Schema({
         type: Boolean,
         default: false
     },
+    membresia: {
+        
+        fecha_Afi_BY: {
+            type: Date,
+            default: Date.now
+        },
+        fecha_fin_BY:{
+            type: Date
+        },
+       
+        fecha_Afi_JKA: {
+            type: Date
+        },
+      
+        fecha_fin_JKA: {
+            type: Date
+        },
+        tipo_membresia_BY: {
+            type: String,
+            enum: ['Mensual', 'Trimestral', 'Anual']
+        },
+        tipo_membresia_JKA: {
+            type: String,
+            enum: ['Anual']
+        },
+        estado: {
+            type: String,
+            enum: ['Activo', 'Inactivo', 'Suspendido']
+        }
+    },
     destresa: {
         type: String,
     },
@@ -36,16 +86,11 @@ const UsuarioSchema = new Schema({
         type : Number,
         default : 0
     },
-    fecha_nacimiento: {
-        type: Date,
-    },
-    numero_Celular: {
-        type: String
-    },
-    dni:{
+    nivel: {
         type: String,
-        required: true
+        default: 'Principiante',
     },
+
     kyu: {
         type: String,
         default: '10 kyu'
@@ -58,30 +103,86 @@ const UsuarioSchema = new Schema({
         type: Boolean,
         default: false
     },
-    address: {
-        type: String
-    },
+    
     type_dni: {
         type: String,
         required: true,
-        default: 'CC'
+        enum: ['CC', 'Registro Civil', 'Tarjeta de Extranjeria', 'Pasaporte']
     },
-    fecha_Afi_JKA: {
-        type: Date
-    },
-    fecha_Afi_BY: {
-        type: Date
-    },
-    asistencia: {
-        type: String
-    },
+
     paz_y_salvo: {
         type: Boolean,
         default: true
     },
     fecha_ultimo_examen: {
         type: Date
+    },
+    asistencia_Clases: {
+        type: [Date]
+    },
+    observaciones: {
+        type: String
+    },
+    historial_Pagos: [{
+        fechaPago: {
+            type: Date,
+            default: Date.now
+        },
+        cantidad: {
+            type: Number
+        },
+        metodoPago: {
+            type: String
+        }
+    }],
+    saldo_Pendiente: {
+        type: Number,
+        default: 0
+    },
+    historial_Transacciones: [{
+        tipo: {
+            type: String
+        },
+        descripcion: {
+            type: String
+        },
+        cantidad: {
+            type: Number
+        },
+        fecha: {
+            type: Date,
+            default: Date.now
+        }
+    }],
+    contacto_Emergencia: {
+        nombre: {
+            type: String
+        },
+        telefono: {
+            type: String
+        },
+        relacion: {
+            type: String
+        }
+    },
+    informacion_Medica: {
+        alergias: {
+            type: String
+        },
+        condicionesMedicas: {
+            type: String
+        }
+    },
+    preferencias_de_Contacto: {
+        tipo: {
+            type: String
+        },
+        detalles: {
+            type: String
+        }
     }
+    
+
 
 });
 

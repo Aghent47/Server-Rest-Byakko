@@ -11,7 +11,7 @@ router.get('/', usuarios.get);
 router.post('/', [
 
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
-    check('password', 'La contraseña debe contener entre 6 y 12 caracteres').isLength({ min:8, max:12 }),
+    check('password', 'La contraseña debe contener entre 6 y 24 caracteres').isLength({ min:8, max:24 }),
     check('correo', 'El correo no es válido').isEmail(),
     check('correo').custom(emailExist),
     check('dni').custom(dniExiste),
