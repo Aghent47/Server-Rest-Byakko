@@ -6,7 +6,11 @@ const gestionPagosSchema = new Schema({
         ref: 'Usuario',
         required: true
     },
-    fechaPago: {
+    numeroPago:{
+        type: Number,
+        required: true
+    },
+    fechaPago: {    
         type: Date,
         default: Date.now,
         required: true
