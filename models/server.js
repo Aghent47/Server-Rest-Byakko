@@ -4,12 +4,14 @@ import cors from 'cors';
 
 import routesUsuarios from '../routes/usuarios.js';
 import { dbConection } from "../database/config.js";
+import routesPagos from "../routes/pagos.js";
 
 export class ServerBY{
     constructor(){
         this.app = express();
         this.paths = {
             usuarios: '/api/usuarios',
+            pagos: '/api/pagos',
         };
 
         // conectar a la base de datos
@@ -35,6 +37,7 @@ export class ServerBY{
 
     routes() {
         this.app.use( this.paths.usuarios, routesUsuarios );
+        this.app.use( this.paths.pagos, routesPagos );
     }
 
     listen(){

@@ -181,9 +181,6 @@ const UsuarioSchema = new Schema({
             type: String
         }
     }
-    
-
-
 });
 
 UsuarioSchema.methods.toJSON = function() {
