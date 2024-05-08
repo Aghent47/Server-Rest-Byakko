@@ -1,15 +1,14 @@
 import { Schema, model } from 'mongoose';
-
 const gestionPagosSchema = new Schema({
     usuarioID: {
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
         required: true
     },
-    numeroPago:{
-        type: Number,
-        required: true
-    },
+     numeroPago:{
+         type: Number,
+         required: true
+     },
     fechaPago: {    
         type: Date,
         default: Date.now,
@@ -45,5 +44,6 @@ const gestionPagosSchema = new Schema({
         ref: 'Factura'
     }
 });
-
+// Agrega el campo autoincrementable
+// gestionPagosSchema.plugin(autoIncrement.plugin, { model: 'GestionPagos', field: 'numeroPago' });
 export const GestionPagos = model('GestionPagos', gestionPagosSchema)
