@@ -15,7 +15,7 @@ const gestionPagosSchema = new Schema({
         required: true
     },
     montoPagado: {
-        type: Number,
+        type: String,
         required: true,
         min: 0
     },
@@ -38,10 +38,6 @@ const gestionPagosSchema = new Schema({
         enum: ['Completo', 'Pendiente'],
         default: 'Completo',
         required: true
-    },
-    facturaID: {
-        type: Schema.Types.ObjectId,
-        ref: 'Factura'
     }
 });
 // Agrega el campo autoincrementable

@@ -59,9 +59,12 @@ usuarios.put = async (req, res) => {
 }
 
 usuarios.delete = async (req, res) => {
+    const { id } = req.params;
+    const usuario = await Usuario.findByIdAndUpdate({ user: id }, { estado: false });
 
     res.json({
-        msg: 'DELETE API - usuarios.delete',
+        msg: 'Usuario Eliminado con Existo',
+        usuario
     })
 }
 

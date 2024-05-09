@@ -1,5 +1,6 @@
 import { Role } from "../models/role.js";
 import { Usuario } from "../models/usuarios.js"
+import { GestionPagos } from "../models/pagos.js";
 
 export const emailExist = async (correo = '') => {
     //verificamos si existe el correo en DB
@@ -20,6 +21,13 @@ export const exiteUsuarioById = async (id) => {
     const existeUsuario = await Usuario.findById( id );
     if(!existeUsuario){
         throw new Error(`El usuario con ID: ${ id } No se encuentra registrado ` );
+    }
+}
+
+export const existePago = async (id) => {
+    const existePago = await GestionPagos.findById( id );
+    if(!existePago){
+        throw new Error(`El pago con ID: ${ id } No se encuentra registrado ` );
     }
 }
 
